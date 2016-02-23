@@ -1,5 +1,7 @@
 /**
  *
+ * Singleton class.  
+ *  
  * @author AAVG
  */
 public class Game {
