@@ -6,7 +6,7 @@
 
 /**
  *
- * @author logosfabula
+ * @author AAVG
  */
 public interface Castable {
     
