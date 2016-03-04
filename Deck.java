@@ -1,11 +1,16 @@
-
 import java.util.Collections;
 import java.util.Stack;
 import java.util.*;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 /**
  *
- * @author AAVG
+ * @author logosfabula
  */
 class Deck {
     Stack<Card> cards = new Stack<>();
@@ -16,6 +21,8 @@ class Deck {
         } else {
             throw new EmptyStackException();
         }
+        
+    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     void shuffle() {
