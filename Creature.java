@@ -6,7 +6,7 @@
 
 /**
  *
- * @author AAVG
+ * @author logosfabula
  */
 class Creature {
     private int power;
