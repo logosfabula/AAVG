@@ -8,9 +8,9 @@
  *
  * @author AAVG
  */
-public interface Component {
-    void add(Component component);
-    boolean remove(Component component);
-    Component getChild(int index);
-    void describe();
+interface Node {
+    abstract void operation();
+    void add(Node node) throws SinglePartException;
+    void remove(Node node) throws SinglePartException;
+    Node getChild(int index);
 }
