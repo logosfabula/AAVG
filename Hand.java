@@ -1,14 +1,14 @@
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 /**
  *
- * @author AAVG
+ * @author logosfabula
  */
 class Hand {
     List<Card> cards = new ArrayList<>();
+    
     void add(Card card) {
         cards.add(card);
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

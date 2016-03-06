@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,10 +10,10 @@ import java.util.List;
  *
  * @author logosfabula
  */
-class Board {
-    List<Creature> creatures = new ArrayList<>();
+public class GameStack {
+    Stack<Castable> cards = new Stack<>();
     
-    public List getCreatures(){
-        return creatures;
+    void addSpell(Castable spell){
+        cards.add(spell);
     }
 }
