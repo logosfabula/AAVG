@@ -6,24 +6,30 @@
 
 /**
  *
- * @author logosfabula
+ * @author AAVG
  */
 public class Player {
+    int id;
     String name;
     int lifePoints = 20;
-    Board field = new Board();
+    Board board = new Board();
     Deck deck = new Deck();
     Hand hand = new Hand();
     
-    Player(String name) {
+    Player(String name, int id) {
         this.name = name;
+        this.id = id;
     }
     
     int getLifePoints(){
         return lifePoints;
     }
     
-    void setLifePoints(int lp){
+    void setLifePoints(int lp) throws DeadPlayerException{
         lifePoints = lp;
+        
+        if (lifePoints <= 0){
+            throw new DeadPlayerException(this);
+        }
     }
 }

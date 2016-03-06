@@ -8,7 +8,9 @@
  *
  * @author AAVG
  */
-public abstract class SorcerySpell implements Castable {
-    @Override
-    public void cast() {}
+class DeadPlayerException extends Exception {
+
+    public DeadPlayerException(Player p) {
+    }
+    
 }

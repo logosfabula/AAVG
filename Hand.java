@@ -4,14 +4,14 @@ import java.util.List;
 
 /**
  *
- * @author logosfabula
+ * @author AAVG
  */
 class Hand {
     List<Card> cards = new ArrayList<>();
     
     void add(Card card) {
         cards.add(card);
-//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        checkHandSize(7);
     }
     
     void discard(Card card) {
@@ -29,8 +29,8 @@ class Hand {
         System.out.println("discard one card, please.");
     }
     
-    void checkHandSize() {
-        if (cards.size() > 7)
+    void checkHandSize(int size) {
+        if (cards.size() > size)
             promptDiscard();
     }
 }

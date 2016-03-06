@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author logosfabula
+ * @author AAVG
  */
 class Board {
     List<Creature> creatures = new ArrayList<>();

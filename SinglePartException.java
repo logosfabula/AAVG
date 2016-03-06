@@ -8,7 +8,8 @@
  *
  * @author AAVG
  */
-public abstract class SorcerySpell implements Castable {
-    @Override
-    public void cast() {}
+class SinglePartException extends Exception {
+    public SinglePartException(){
+        super("Not supported method");
+    }
 }

@@ -8,7 +8,7 @@
  *
  * @author AAVG
  */
-public abstract class SorcerySpell implements Castable {
-    @Override
-    public void cast() {}
+interface Executable {
+    void execute();
+    
 }

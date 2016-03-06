@@ -6,12 +6,30 @@
 
 /**
  *
- * @author logosfabula
+ * @author AAVG
  */
 class Creature {
     private int power;
     private int toughness;
     private Castable effect;
+    private boolean tapped;
+    
+    
+    void tap(){
+        tapped = true;
+    }
+    
+    void untap(){
+        tapped = false;
+    }
+    
+    boolean getTapped(){
+        return tapped;
+    }
+    
+    void setTapped(boolean tapped){
+        this.tapped = tapped;
+    }
     
     int getPower(){
         return power;

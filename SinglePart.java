@@ -8,7 +8,15 @@
  *
  * @author AAVG
  */
-public abstract class SorcerySpell implements Castable {
+public abstract class SinglePart extends Component {
+
+    public SinglePart(String string) {
+        super(string);
+    }
+
     @Override
-    public void cast() {}
+    void operation() {
+        //operation
+    }
+    
 }

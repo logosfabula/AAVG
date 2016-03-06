@@ -8,7 +8,8 @@
  *
  * @author AAVG
  */
-public abstract class SorcerySpell implements Castable {
-    @Override
-    public void cast() {}
+class UnsupportedPartException extends Exception {
+    public UnsupportedPartException(){
+        super("Wrong type of component.");
+    }
 }

@@ -8,7 +8,11 @@
  *
  * @author AAVG
  */
-public abstract class SorcerySpell implements Castable {
+public class CombatPhase extends Phase{
+
     @Override
-    public void cast() {}
+    void play() {
+        //... to be implemented
+    }
+    
 }
