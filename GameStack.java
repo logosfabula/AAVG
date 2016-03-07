@@ -8,7 +8,7 @@ import java.util.Stack;
 
 /**
  *
- * @author logosfabula
+ * @author AAVG
  */
 public class GameStack {
     Stack<Castable> cards = new Stack<>();

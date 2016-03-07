@@ -6,7 +6,7 @@
 
 /**
  *
- * @author logosfabula
+ * @author AAVG
  */
 public abstract class InstantSpell implements Castable {
     @Override

@@ -8,7 +8,6 @@
  *
  * @author AAVG
  */
-public abstract class SorcerySpell implements Castable {
-    @Override
-    public void cast() {}
+public class OmeopathySpell extends InstantSpell {
+    // DOES NOTHING
 }

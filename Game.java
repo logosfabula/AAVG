@@ -1,3 +1,6 @@
+
+import java.util.EmptyStackException;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,7 +9,7 @@
 
 /**
  *
- * @author logosfabula
+ * @author AAVG
  */
 class Game {
     public static final Game game = new Game();
@@ -15,12 +18,15 @@ class Game {
     
     GameStack gameStack;
     
+    TurnManager turnManager;
+    PhaseManager phaseManager;
+    
     private Game(){
-        player1 = new Player("Player 1");
-        player2 = new Player("Player 2");
+        player1 = new Player("Player 1", 1);
+        player2 = new Player("Player 2", 2);
     }
     
-    void setup(){
+    void setup() throws EmptyDeckException{
         InstantSpell omeopathy = new OmeopathySpell();
         Card omeopathyCard = new Card(omeopathy);
         
@@ -47,19 +53,22 @@ class Game {
         }
     }
     
-    void start (){
+    void start(){
         System.out.println("Game started!");
         
         System.out.println("Player 1's cards");
         player1.hand.showCards();
         System.out.println(player1.hand.cards.size());
         
-        
         System.out.println("Player 2's cards");
         player2.hand.showCards();
-        System.out.println(player2.hand.cards.size());
-        
-        
-        
+        System.out.println(player2.hand.cards.size());     
+
+        // start game
+        new Turn(player1).play();
+    }
+    
+    void gameOver(){
+        //...
     }
 }
