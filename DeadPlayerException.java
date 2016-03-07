@@ -8,9 +8,9 @@
  *
  * @author logosfabula
  */
-public interface Castable {
-    void cast();
-    String getDescription();
-    String getType();
-    String getName();
+class DeadPlayerException extends Exception {
+
+    public DeadPlayerException(Player p) {
+    }
+    
 }

@@ -8,9 +8,10 @@
  *
  * @author logosfabula
  */
-public interface Castable {
-    void cast();
-    String getDescription();
-    String getType();
-    String getName();
+public class NullPhase extends Phase{
+
+    @Override
+    void play() {
+        // NULL PLAY
+    }
 }
