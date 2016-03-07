@@ -8,9 +8,12 @@
  *
  * @author logosfabula
  */
-public interface Castable {
-    void cast();
-    String getDescription();
-    String getType();
-    String getName();
+public class CombatPhase extends Phase{
+
+    @Override
+    void play() throws EmptyDeckException {
+        //... to be implemented
+        
+        finish();
+    }
 }

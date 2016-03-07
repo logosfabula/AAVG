@@ -8,7 +8,9 @@
  *
  * @author logosfabula
  */
-public abstract class InstantSpell implements Castable {
-    @Override
-    public void cast() {}
+public abstract class InstantSpell extends Spell {
+    
+    public InstantSpell() {
+        this.type = "Instant";
+    }
 }

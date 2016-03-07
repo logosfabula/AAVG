@@ -8,7 +8,30 @@
  *
  * @author logosfabula
  */
-public abstract class CreatureSpell implements Castable {
-    @Override
-    public void cast() {}
+public abstract class CreatureSpell extends Spell {
+
+    String creatureName;
+    int creaturePower;
+    int creatureToughness;
+    Castable creatureAbility;
+
+    public CreatureSpell() {
+        this.type = "Creature";
+    }
+    
+    String getCreatureName(){
+        return creatureName;
+    }
+    
+    int getCreaturePower(){
+        return creaturePower;
+    }
+    
+    int getCreatureToughness(){
+        return creatureToughness;
+    }
+    
+    Castable getCreatureAbility(){
+        return creatureAbility;
+    }
 }

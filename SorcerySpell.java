@@ -8,7 +8,9 @@
  *
  * @author logosfabula
  */
-public abstract class SorcerySpell implements Castable {
-    @Override
-    public void cast() {}
+public abstract class SorcerySpell extends Spell {
+
+    public SorcerySpell() {
+        this.type = "Sorcery";
+    }
 }

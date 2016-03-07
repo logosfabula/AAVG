@@ -8,9 +8,13 @@
  *
  * @author logosfabula
  */
-public interface Castable {
-    void cast();
-    String getDescription();
-    String getType();
-    String getName();
+public class EndPhase extends Phase{
+
+    @Override
+    void play() throws EmptyDeckException {
+        // Triggers end-turn effects
+        
+        finish();
+    }
+    
 }

@@ -11,9 +11,31 @@ import java.util.Stack;
  * @author logosfabula
  */
 public class GameStack {
-    Stack<Castable> cards = new Stack<>();
+    Stack<Castable> castables = new Stack<>();
     
     void addSpell(Castable spell){
-        cards.add(spell);
+        castables.add(spell);
+    }
+    
+    boolean isEmpty(){
+        return castables.isEmpty();
+    }
+    
+    void describe(){
+        if (!castables.isEmpty()){
+            for (Castable castable : castables){
+                System.out.println(castable.getName());
+                System.out.println(castable.getType());
+                System.out.println(castable.getDescription());
+            }
+        } else {
+            System.out.println("Empty.");
+        }
+    }
+    
+    void execute(){
+        for (Castable castable : castables){
+            castable.cast();
+        }
     }
 }

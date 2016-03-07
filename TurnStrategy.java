@@ -8,9 +8,6 @@
  *
  * @author logosfabula
  */
-public interface Castable {
-    void cast();
-    String getDescription();
-    String getType();
-    String getName();
+public interface TurnStrategy {
+    Player selectNextPlayer(Player currentPlayer);
 }
