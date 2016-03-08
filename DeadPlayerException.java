@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2016 logosfabula.
+ * Copyright 2016 Antonio Panfili, Francesco Gemin, Vladimyr Tarquini e Anton Maria Prati.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,7 @@
 
 /**
  *
- * @author logosfabula
+ * @author Antonio Panfili, Francesco Gemin, Vladimyr Tarquini e Anton Maria Prati
  */
 class DeadPlayerException extends Exception {
 

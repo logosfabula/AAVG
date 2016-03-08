@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author logosfabula
+ * @author Antonio Panfili, Francesco Gemin, Vladimyr Tarquini e Anton Maria Prati
  */
 class Hand {
     List<Card> cards = new ArrayList<>();
