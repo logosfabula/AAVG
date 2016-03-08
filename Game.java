@@ -1,15 +1,32 @@
 
-import java.util.EmptyStackException;
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * The MIT License
+ *
+ * Copyright 2016 logosfabula.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 /**
  *
- * @author AAVG
+ * @author logosfabula
  */
 class Game {
     public static final Game game = new Game();
@@ -22,13 +39,16 @@ class Game {
     PhaseManager phaseManager;
     
     private Game(){
-        player1 = new Player("Player 1", 1);
-        player2 = new Player("Player 2", 2);
+        player1 = new Player("Player 1");
+        player2 = new Player("Player 2");
+        turnManager = new TurnManager();
+        phaseManager = new PhaseManager();
+        gameStack = new GameStack();
     }
     
     void setup() throws EmptyDeckException{
-        InstantSpell omeopathy = new OmeopathySpell();
-        Card omeopathyCard = new Card(omeopathy);
+        InstantSpell homeopathy = new HomeopathySpell();
+        Card omeopathyCard = new Card(homeopathy);
         
         /* builds player 1's deck */
         for (int i = 0; i < 50; i++){
@@ -41,34 +61,38 @@ class Game {
         }
         
         /* creates player 1's hand */
-        for (int i = 0; i < 5; i++){
-            player1.deck.draw(player1.hand);
+        for (int i = 0; i < player1.handLimit; i++){
+            player1.deck.draw(player1);
         }
         
-        player1.hand.discard(omeopathyCard);
-        
         /* creates player 2's hand */
-        for (int i = 0; i < 5; i++){
-            player2.deck.draw(player2.hand);
+        for (int i = 0; i < player2.handLimit; i++){
+            player2.deck.draw(player2);
         }
     }
     
     void start(){
-        System.out.println("Game started!");
-        
-        System.out.println("Player 1's cards");
-        player1.hand.showCards();
-        System.out.println(player1.hand.cards.size());
-        
-        System.out.println("Player 2's cards");
-        player2.hand.showCards();
-        System.out.println(player2.hand.cards.size());     
+        System.out.println("Game started!"); 
 
-        // start game
-        new Turn(player1).play();
+        try {
+            // start game
+            new Turn(player1).play();
+        } catch (EmptyDeckException ede) {
+            gameOver(ede);
+        }
     }
     
-    void gameOver(){
-        //...
+    void gameOver(Exception e){
+        if (e instanceof EmptyDeckException){
+            EmptyDeckException ede = (EmptyDeckException)e;
+            System.out.println(ede.outOfCardsPlayer.getName() + " Decked-Out.");
+            System.out.println(getOtherPlayer(ede.outOfCardsPlayer).getName() + " won.");
+        }
+        
+        System.exit(0);
+    }
+    
+    Player getOtherPlayer(Player thisPlayer){
+        return thisPlayer == player1 ? player2 : player1;
     }
 }

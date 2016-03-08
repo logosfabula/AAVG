@@ -1,4 +1,3 @@
-
 /*
  * The MIT License
  *
@@ -27,26 +26,11 @@
  *
  * @author logosfabula
  */
-public class Turn {
-    Player nextPlayer;
-    Player currentPlayer;
-    TurnStrategy currentStrategy;
+public abstract class CreatureAbility implements Castable {
+    String type = "Ability";
     
-    Turn(Player currentPlayer){
-        Game.game.turnManager.setCurrentPlayer(currentPlayer);
-        currentStrategy = Game.game.turnManager.getNextStrategy();
-        nextPlayer = currentStrategy.selectNextPlayer(currentPlayer);
-    }
-    
-    void play() throws EmptyDeckException{
-        System.out.println("Player " + Game.game.turnManager.getCurrentPlayer().getName() + "'s turn.");
-        
-        // plays first phase
-        PhaseStrategy ps = Game.game.phaseManager.getNextStrategy();
-        Phase p = ps.selectNextPhase(NullPhase.class);
-        p.play();
-        
-        // plays next turn
-        new Turn(nextPlayer).play();
+    @Override
+    public String getType(){
+        return type;
     }
 }
