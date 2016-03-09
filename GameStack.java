@@ -33,6 +33,7 @@ public class GameStack {
     Stack<Castable> castables = new Stack<>();
     
     void addSpell(Castable spell){
+        spell.prepare();
         castables.add(spell);
     }
     

@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @author Antonio Panfili, Francesco Gemin, Vladimyr Tarquini e Anton Maria Prati
  */
 class Hand {
-    List<Card> cards = new ArrayList<>();
+    List<Card> cards = new LinkedList<>();
     int cardLimit;
     
     Hand(int maxSize){
@@ -63,9 +63,10 @@ class Hand {
         int i = 1;
         for (Card card : cards){
             if ("Instant".equals(card.getSpell().getType())){
-                System.out.println(i++ + ")");
+                System.out.println(i + ")");
                 card.describe();
             }
+            i++;
         }
     }
 }
