@@ -66,13 +66,12 @@ public class MainPhase extends Phase{
         Scanner scan = new Scanner(System.in);
         String choice = scan.next();
         
-        if (!(gameStack.isEmpty() && "P".equals(choice))){
-            System.out.println("passes: " + passes);
-            
+        if (!(gameStack.isEmpty() && "P".equals(choice))){          
             if ("C".equals(choice)){
                 System.out.println("Pick one card:");
                 int selectedCard = scan.nextInt();
                 Card playedCard = priorityPlayer.hand.pick(selectedCard - 1);
+                playedCard.getSpell().setCaster(priorityPlayer);
                 gameStack.addSpell(playedCard.getSpell());
                 passes = 2;
             } 
@@ -80,6 +79,7 @@ public class MainPhase extends Phase{
                 System.out.println("Pick one creature's ability :");
                 int selectedCreature = scan.nextInt();
                 Creature activatedCreature = priorityPlayer.board.getCreature(selectedCreature);
+                activatedCreature.getCreatureAbility().setCaster(priorityPlayer);
                 gameStack.addSpell(activatedCreature.getEffect());
                 passes = 2;
             } 

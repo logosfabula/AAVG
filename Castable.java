@@ -27,8 +27,11 @@
  * @author Antonio Panfili, Francesco Gemin, Vladimyr Tarquini e Anton Maria Prati
  */
 public interface Castable {
+    void prepare();
     void cast();
     String getDescription();
     String getType();
     String getName();
+    Player getCaster();
+    void setCaster(Player caster);
 }

@@ -1,4 +1,11 @@
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+
 
 /*
  * The MIT License
@@ -30,13 +37,17 @@
  */
 class Game {
     public static final Game game = new Game();
-    Player player1;
-    Player player2;
+    final Player player1;
+    final Player player2;
     
-    GameStack gameStack;
+    final GameStack gameStack;
     
-    TurnManager turnManager;
-    PhaseManager phaseManager;
+    final TurnManager turnManager;
+    final PhaseManager phaseManager;
+    
+    final Observer globalObserver;
+    
+    
     
     private Game(){
         player1 = new Player("Player 1");
@@ -44,6 +55,7 @@ class Game {
         turnManager = new TurnManager();
         phaseManager = new PhaseManager();
         gameStack = new GameStack();
+        globalObserver = new Observer();
     }
     
     void setup() throws EmptyDeckException{
@@ -94,5 +106,23 @@ class Game {
     
     Player getOtherPlayer(Player thisPlayer){
         return thisPlayer == player1 ? player2 : player1;
+    }
+    
+    class Observer {
+        List<EventAction> actions = new ArrayList<>();
+        
+        void register(EventAction action){
+            actions.add(action);
+        }
+        
+        void update(String trigger){
+            Iterator<EventAction> iterator = actions.iterator();
+            while (iterator.hasNext()){
+                EventAction ea = iterator.next();
+                if (ea.event == trigger){
+                    ea.run();
+                }
+            }
+        }    
     }
 }

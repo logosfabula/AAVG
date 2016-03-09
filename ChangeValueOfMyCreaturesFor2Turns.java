@@ -1,7 +1,11 @@
+
+import java.util.Iterator;
+import java.util.List;
+
 /*
  * The MIT License
  *
- * Copyright 2016 Antonio Panfili, Francesco Gemin, Vladimyr Tarquini e Anton Maria Prati.
+ * Copyright 2016 logosfabula.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,36 +28,40 @@
 
 /**
  *
- * @author Antonio Panfili, Francesco Gemin, Vladimyr Tarquini e Anton Maria Prati
+ * @author logosfabula
  */
-public abstract class Spell implements Castable{
-    String type;
-    String name;
-    String description;
-    Player caster;
+public class ChangeValueOfMyCreaturesFor2Turns extends SorcerySpell{
     
-    @Override
-    public String getType(){
-        return type;
-    }
+    //this.globalObserver.register(new EventAction());  
     
+    List<Creature> targetedCreatures;
+
     @Override
-    public String getName(){
-        return name;
-    }
-    
-    @Override
-    public String getDescription(){
-        return description;
-    }
-    
-    @Override
-    public void setCaster(Player caster) {
-        this.caster = caster;
+    public void cast() {
+        Iterator<Creature> iterator = targetedCreatures.iterator();
+        while (iterator.hasNext()){
+            Creature target = iterator.next();
+            target.setPower(target.getPower() + 1);
+        }
+        Game.game.globalObserver.register(new EventAction("End Phase"){
+            int additionalTurns = 1;
+            List<Creature> targets = targetedCreatures;
+            @Override
+            void run() {
+                if (additionalTurns > 0){
+                    additionalTurns--;
+                }
+                else {
+                    for (Creature creature : targets){
+                        creature.setPower(creature.getPower() - 1);
+                    }
+                }
+            }
+        });  
     }
 
     @Override
-    public Player getCaster() {
-        return caster;
+    public void prepare() {
+        targetedCreatures = caster.board.getCreatures();
     }
 }
