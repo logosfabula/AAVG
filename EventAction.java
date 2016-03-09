@@ -1,8 +1,7 @@
-
 /*
  * The MIT License
  *
- * Copyright 2016 Antonio Panfili, Francesco Gemin, Vladimyr Tarquini e Anton Maria Prati.
+ * Copyright 2016 logosfabula.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,26 +24,22 @@
 
 /**
  *
- * @author Antonio Panfili, Francesco Gemin, Vladimyr Tarquini e Anton Maria Prati
+ * @author logosfabula
  */
-public class Turn {
-    Player nextPlayer;
-    Player currentPlayer;
-    TurnStrategy currentStrategy;
-    
-    Turn(Player currentPlayer){
-        Game.game.turnManager.setCurrentPlayer(currentPlayer);
-        currentStrategy = Game.game.turnManager.getNextStrategy();
-        nextPlayer = currentStrategy.selectNextPlayer(currentPlayer);
+abstract class EventAction {
+    String event;
+
+    public EventAction(String event) {
+        this.event = event;
     }
     
-    void play() throws EmptyDeckException{
-        System.out.println("Player " + Game.game.turnManager.getCurrentPlayer().getName() + "'s turn.");
-        
-        // play turn's first phase
-        Game.game.phaseManager.getNextStrategy().selectNextPhase(NullPhase.class).play();
-        
-        // play next turn
-        new Turn(nextPlayer).play();
+    void setEvent(String event){
+        this.event = event;
     }
+    
+    String getEvent(){
+        return event;
+    }
+    
+    abstract void run();
 }

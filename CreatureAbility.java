@@ -28,9 +28,20 @@
  */
 public abstract class CreatureAbility implements Castable {
     String type = "Ability";
+    Player caster;
     
     @Override
     public String getType(){
         return type;
+    }
+    
+    @Override
+    public void setCaster(Player caster) {
+        this.caster = caster;
+    }
+
+    @Override
+    public Player getCaster() {
+        return caster;
     }
 }

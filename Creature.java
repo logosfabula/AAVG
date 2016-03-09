@@ -90,4 +90,12 @@ class Creature {
         System.out.println("Is tapped? " + (tapped ? "Yes." : "No.") );
         System.out.println("Effect: " + (effect != null ? effect.getType() + effect.getDescription() : "None."));
     }
+    
+    CreatureAbility getCreatureAbility(){
+        return effect;
+    }
+    
+    void setCreatureAbility(CreatureAbility newEffect){
+        effect = newEffect;
+    }
 }

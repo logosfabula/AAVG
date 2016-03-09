@@ -59,8 +59,6 @@ public class TurnManager {
         return rivalPlayer.getName();
     }
     
-    
-    
     TurnStrategy getNextStrategy(){
         TurnStrategy nextTurnStrategy;
         try {
