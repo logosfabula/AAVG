@@ -34,7 +34,12 @@ public class HomeopathySpell extends InstantSpell {
     }
 
     @Override
+    public void prepare() {
+        // Nothing to target nor affect
+    }
+    
+    @Override
     public void cast() {
         System.out.println("Doing nothing...");
-    }
+    }    
 }

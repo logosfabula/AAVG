@@ -32,6 +32,7 @@ public class EndPhase extends Phase{
     void play() throws EmptyDeckException {
         // Triggers end-turn effects
         super.play();
+        Game.game.globalObserver.update(this.getClass().getName());
         
         finish();
     }

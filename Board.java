@@ -1,5 +1,6 @@
 
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 /*
@@ -31,7 +32,7 @@ import java.util.List;
  * @author Antonio Panfili, Francesco Gemin, Vladimyr Tarquini e Anton Maria Prati
  */
 class Board {
-    List<Creature> creatures = new ArrayList<>();
+    List<Creature> creatures = new LinkedList<>();
     
     public List getCreatures(){
         return creatures;
@@ -55,19 +56,18 @@ class Board {
     }
     
     void describeAbilities(){
-        System.out.println("Creatures with abilities:");
+        System.out.println("Available creatures with abilities:");
         int i = 1;
-        if (!creatures.isEmpty()){
-            for (Creature creature : creatures){
-                if (creature.getEffect() != null){
-                    System.out.println(i + ")");
-                    creature.getName();
-                    creature.getEffect().getDescription();
-                }
-                i++;
+        Iterator<Creature> iterator = creatures.iterator();
+        
+        while (iterator.hasNext()){
+            Creature creature = iterator.next();
+            if (creature.getEffect() != null){
+                System.out.println(i + ")");
+                creature.getName();
+                creature.getEffect().getDescription();
             }
-        } else {
-            System.out.println("None.");
+            i++;
         }
     }
 }
